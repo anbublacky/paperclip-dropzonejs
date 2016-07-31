@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   def new
     @upload = Upload.new
+    @music = Music.create
   end
 
   def create
@@ -24,8 +25,15 @@ class UploadsController < ApplicationController
     end
   end
 
+  def progress_limit
+    @music = Music.find_by_id(params["music_id"])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def upload_params
-    params.require(:upload).permit(:image)
+    params.require(:upload).permit(:image, :music_id)
   end
 end

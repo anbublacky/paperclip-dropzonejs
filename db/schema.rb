@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140511202447) do
+ActiveRecord::Schema.define(version: 20160730162632) do
+
+  create_table "musics", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "uploads", force: true do |t|
+    t.integer  "music_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
